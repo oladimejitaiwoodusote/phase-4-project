@@ -37,10 +37,19 @@ def create_doctors():
 def create_pets(owners, doctors):
     pets = []
     types = ["Dog", "Cat", "Hamster", "Parrot"]
+    images = {
+        "Dog": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Retriever_in_water.jpg",
+        "Cat": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg/1920px-Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg",
+        "Hamster": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Peach_the_pet_hamster.jpg",
+        "Parrot": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Blue-and-Yellow-Macaw.jpg"
+    }
     for _ in range(20):
+        pet_type = rc(types),
+        print(pet_type)
         p = Pet(
             name = fake.name(),
-            pet_type = rc(types),
+            pet_type = pet_type[0],
+            image = images[pet_type[0]],
             owner_id = rc([owner.id for owner in owners]),
             doctor_id = rc([doctor.id for doctor in doctors])
         )
