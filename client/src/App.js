@@ -8,10 +8,13 @@ import { useState } from "react"
 function App() {
   return (
     <>
-      <Welcome />
-      <Login />
-      <Signup />
-      <DocLogin />
+      <Routes>
+        <Route path ='/' element ={<Welcome/>}/>
+        <Route path ='login' element ={<Login/>}/>
+        <Route path ='signup' element ={<Signup/>}/>
+        <Route path ='doclogin' element ={<DocLogin/>}/>
+      </Routes>
+      
     </>
   );
 }
