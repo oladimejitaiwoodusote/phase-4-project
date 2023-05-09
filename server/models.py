@@ -22,6 +22,7 @@ class Owner(db.Model):
     __tablename__ = 'owners'
 
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String)
     name = db.Column(db.String)
     username = db.Column(db.String)
     password = db.Column(db.String)
