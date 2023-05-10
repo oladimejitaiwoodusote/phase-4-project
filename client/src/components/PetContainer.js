@@ -1,12 +1,12 @@
 import React from 'react'
-import { useState, useEffect}
+import { useState, useEffect } from 'react'
 
 function PetContainer({user}) {
 
     const [pets, setPets]= useState([])
 
     useEffect(()=> {
-        fetch('/user-pets/${user.id}')
+        fetch(`/user-pets/${user.id}`)
         .then(response => response.json())
         .then(data=> setPets(data))
 
