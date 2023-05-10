@@ -11,6 +11,7 @@ def create_owners():
     owners = []
     for _ in range(10):
         o = Owner(
+            email = fake.email(),
             name=fake.name(),
             username = fake.name(),
             password = fake.name()
