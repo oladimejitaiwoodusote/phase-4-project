@@ -1,9 +1,9 @@
 import React from 'react'
 import ApptContainer from './ApptContainer'
 
-function Desk() {
+function Desk({doctor}) {
     return (
-        <ApptContainer/>
+        <ApptContainer doctor={doctor}/>
     )
 }
 
