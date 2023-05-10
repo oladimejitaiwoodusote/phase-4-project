@@ -19,12 +19,13 @@ function Login() {
     // #endregion
 
     function submitHandler(e) {
-        // AUTH here
+        // prevent navigate if login invalid
         e.preventDefault()
         setData({
             user: "",
             pass: ""
         })
+        navigate("/dashboard")
     }
     
     const navigate = useNavigate()

@@ -71,6 +71,14 @@ def get_doctor_appts(id):
     except:
         return {"error": "Doctor not found"}, 404
 
+@app.get('/owners/<int:id>')
+def get_owner_pets(id):
+    try:
+        owner = Owner.query.get(id)
+        return [p.to_dict() for p in owner.pets]
+    except:
+        return {"error": "Owner not found"}, 404
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

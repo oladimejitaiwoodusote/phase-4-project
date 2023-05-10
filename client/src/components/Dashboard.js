@@ -1,8 +1,9 @@
 import React from 'react'
+import PetContainer from './PetContainer'
 
 function Dashboard() {
     return (
-        <h3>Welcome</h3>
+        <PetContainer />
     )
 }
 
