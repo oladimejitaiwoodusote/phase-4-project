@@ -1,4 +1,5 @@
 import React from 'react'
+import PetCard from './PetCard'
 import { useState, useEffect } from 'react'
 
 function PetContainer({user}) {
