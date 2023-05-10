@@ -27,11 +27,12 @@ function ApptContainer({owner, doctor}) {
         
 
     const cardArr = arr.map(appt => <ApptCard key={appt.id} appt={appt}/>)
+    console.log(cardArr)
 
     return (
         <div>
             <h3>Appointments</h3>
-            {owner || doctor ? cardArr: "No appointments"}
+            {cardArr.length ? cardArr: "No appointments"}
         </div>
     )
 }
