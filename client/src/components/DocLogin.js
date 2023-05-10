@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-function DocLogin({attemptLogin}) {
+function DocLogin({attemptLogin, currentDoctor, logout}) {
 
     // #region controlled form
     const [formData, setData] = useState(
@@ -28,7 +28,6 @@ function DocLogin({attemptLogin}) {
             email: ""
         })
     }
-
     // add 2FA for this login via email
 
     return (
@@ -37,6 +36,7 @@ function DocLogin({attemptLogin}) {
             <input onChange={changeHandler} name='username'  placeholder='username' value={formData.username}></input>
             <input onChange={changeHandler} name='password' type='password' placeholder='Password' value={formData.password}></input>
             <input type='submit'></input>
+            {currentDoctor? <button onClick={logout}>Logout</button>: null}
         </form>
     )
 }

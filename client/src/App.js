@@ -3,19 +3,29 @@ import Login from "./components/Login"
 import Signup from './components/Signup'
 import DocLogin from './components/DocLogin'
 import { Routes, Route, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
 
   const [currentOwner, setCurrentOwner] = useState(null)
   const [currentDoctor, setCurrentDoctor] = useState(null)
-
-  // useEffect(()=>{
-  //   fetch('/check_session')
-  //   .then(res => {
-
-  //   })
-  // })
+ 
+  useEffect(()=>{
+    fetch('/check_session')
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(data => {
+          if (data["type"] === "owner"){
+            setCurrentOwner(data["data"])
+          }
+          else if(data["type"] === "doctor"){
+            setCurrentDoctor(data["data"])
+          }
+        })
+      }
+    })
+  },[])
 
   function attemptLoginOwner(ownerData){
     fetch('/ownerlogin',{
@@ -72,13 +82,27 @@ function App() {
     .then(data => setCurrentOwner(data))
   }
 
+  function ownerLogout(){
+    setCurrentOwner(null)
+    fetch('/owner_logout',{
+      method: 'DELETE'
+    })
+  }
+
+  function doctorLogout(){
+    setCurrentDoctor(null)
+    fetch('/doctor_logout',{
+      method: 'DELETE'
+    })
+  }
+
   return (
     <>
       <Routes>
         <Route path ='/' element ={<Welcome/>}/>
-        <Route path ='login' element ={<Login attemptLogin={attemptLoginOwner}/>}/>
+        <Route path ='login' element ={<Login attemptLogin={attemptLoginOwner} currentOwner={currentOwner} logout={ownerLogout}/>}/>
         <Route path ='signup' element ={<Signup attemptSignup={attemptSignup}/>}/>
-        <Route path ='doclogin' element ={<DocLogin attemptLogin={attemptLoginDoctor}/>}/>
+        <Route path ='doclogin' element ={<DocLogin attemptLogin={attemptLoginDoctor} currentDoctor={currentDoctor} logout={doctorLogout}/>}/>
       </Routes>    
     </>
   );

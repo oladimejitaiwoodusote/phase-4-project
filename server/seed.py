@@ -4,8 +4,10 @@ from faker import Faker
 
 from app import app
 from models import db, Appointment, Doctor, Pet, Owner
+from flask_bcrypt import Bcrypt
 
 fake = Faker()
+bcrypt = Bcrypt(app)
 
 def create_owners():
     owners = []
@@ -14,7 +16,8 @@ def create_owners():
             email = fake.email(),
             name=fake.name(),
             username = fake.user_name(),
-            password = fake.password()
+            #password = fake.password()
+            password = bcrypt.generate_password_hash("password").decode('utf-8')
         )
         owners.append(o)
     
@@ -28,7 +31,7 @@ def create_doctors():
             name = fake.name(),
             hospital = rc(hospitals),
             username = fake.user_name(),
-            password = fake.password(),
+            password = bcrypt.generate_password_hash("password").decode('utf-8'),
             description = fake.sentence(),
             experience = rc(range(2,20))
         )    

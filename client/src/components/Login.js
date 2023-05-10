@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-function Login({attemptLogin}) {
+function Login({attemptLogin, currentOwner, logout}) {
 
     // #region controlled form
     const [formData, setData] = useState(
@@ -33,6 +33,7 @@ function Login({attemptLogin}) {
             <input onChange={changeHandler} name='username' placeholder='Username' value={formData.username}></input>
             <input onChange={changeHandler} name='password' placeholder='Password' type='password' value={formData.password}></input>
             <input onChange={changeHandler} type='submit'></input>
+            {currentOwner? <button onClick={logout}>Logout</button>: null}
         </form>
     )
 }
