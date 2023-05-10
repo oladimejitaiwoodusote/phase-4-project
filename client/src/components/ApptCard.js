@@ -1,8 +1,11 @@
 import React from 'react'
 
-function ApptCard() {
+function ApptCard({ id, type }) {
     return (
-        <div>ApptCard</div>
+        <div>
+            <span>{ id }</span>
+            <span>{ type }</span>
+        </div>
     )
     }
 

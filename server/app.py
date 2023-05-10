@@ -16,7 +16,13 @@ db.init_app(app)
 def home():
     return ''
 
-
+@app.get('/doctors/<int:id>')
+def get_doctor_appts(id):
+    try:
+        doctor = Doctor.query.get(id)
+        return [a.to_dict() for a in doctor.appointments]
+    except:
+        return {"error": "Doctor not found"}, 404
 
 
 if __name__ == '__main__':
