@@ -33,10 +33,10 @@ function Signup({attemptSignup}) {
 
         if (valid) {
             setData({
-              email: "",
-              name: "",
-              username: "",
-              password: ""
+                email: "",
+                name: "",
+                username: "",
+                password: ""
             })
             setConfirm("")
             setValid(false)
@@ -55,8 +55,8 @@ function Signup({attemptSignup}) {
     const [valid, setValid] = useState(false)
 
     function checkMatch() {
-        if (formData.pass && confirm) {
-            if (formData.pass === confirm) {
+        if (formData.password && confirm) {
+            if (formData.password === confirm) {
                 setValid(true)
             }
             else {

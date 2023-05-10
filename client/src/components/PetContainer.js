@@ -2,12 +2,12 @@ import React from 'react'
 import PetCard from './PetCard'
 import { useState, useEffect } from 'react'
 
-function PetContainer({user}) {
+function PetContainer() {
 
     const [pets, setPets]= useState([])
 
     useEffect(()=> {
-        fetch(`/user-pets/${user.id}`)
+        fetch('/owners/5')
         .then(response => response.json())
         .then(data=> setPets(data))
 
@@ -17,7 +17,7 @@ function PetContainer({user}) {
     
     return (
         <div> 
-            <h1>Pet Container</h1>
+            { clientPets }
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ApptCard({ type }) {
+function ApptCard({appt}) {
     return (
         <div>
-            <span>{ type }</span>
+            <span></span>
         </div>
     )
     }
