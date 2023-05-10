@@ -2,6 +2,8 @@ import Welcome from './components/Welcome';
 import Login from "./components/Login"
 import Signup from './components/Signup'
 import DocLogin from './components/DocLogin'
+import Desk from './components/Desk';
+import Dashboard from './components/Dashboard';
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 
@@ -26,6 +28,7 @@ function App() {
       }
     })
   },[])
+
 
   function attemptLoginOwner(ownerData){
     fetch('/ownerlogin',{
@@ -96,6 +99,7 @@ function App() {
     })
   }
 
+
   return (
     <>
       <Routes>
@@ -103,6 +107,8 @@ function App() {
         <Route path ='login' element ={<Login attemptLogin={attemptLoginOwner} currentOwner={currentOwner} logout={ownerLogout}/>}/>
         <Route path ='signup' element ={<Signup attemptSignup={attemptSignup}/>}/>
         <Route path ='doclogin' element ={<DocLogin attemptLogin={attemptLoginDoctor} currentDoctor={currentDoctor} logout={doctorLogout}/>}/>
+        <Route path ='dashboard' element ={<Dashboard/>}/>
+        <Route path ='desk' element ={<Desk/>}/>
       </Routes>    
     </>
   );
