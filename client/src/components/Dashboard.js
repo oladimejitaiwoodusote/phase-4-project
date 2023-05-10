@@ -1,8 +1,11 @@
 import React from 'react'
+import ApptContainer from './ApptContainer'
 
-function Dashboard() {
+function Dashboard({owner}) {
     return (
-        <h3>Welcome</h3>
+        <div>
+            <ApptContainer owner={owner} />
+        </div>
     )
 }
 
