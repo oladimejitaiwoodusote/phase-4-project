@@ -6,13 +6,14 @@ function ApptContainer() {
 
     const [arr, setArr] = useState([])
 
+    // pass doctor prop from App > Desk
     useEffect(() => {
-        fetch('/doctors/1')
-        .then(r => console.log(r))
-        // .then(data => setArr(data))
+        fetch('/doctors/3')
+        .then(r => r.json())
+        .then(data => setArr(data))
     }, [])
 
-    const cardArr = arr.map(appt => <ApptCard id={appt.id} type={appt.type}/>)
+    const cardArr = arr.map(appt => <ApptCard key={appt.id} type={appt.type}/>)
 
     return (
         <div>
