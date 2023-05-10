@@ -2,22 +2,36 @@ import React from 'react'
 import ApptCard from './ApptCard'
 import { useEffect, useState } from 'react'
 
-function ApptContainer() {
+function ApptContainer({owner, doctor}) {
 
     const [arr, setArr] = useState([])
 
     // pass doctor prop from App > Desk
     useEffect(() => {
-        fetch('/doctors/3')
-        .then(r => r.json())
-        .then(data => setArr(data))
-    }, [])
+        if(owner) {
+            fetch(`/owner-appointments/${owner.id}`)
+            .then(response=> response.json())
+            .then(data => setArr(data))
+        }
 
-    const cardArr = arr.map(appt => <ApptCard key={appt.id} type={appt.type}/>)
+        else if(doctor) {
+            fetch(`doctor-appointments/${doctor.id}`)
+            .then(response=> response.json())
+            .then(data => setArr(data))
+
+        }
+    })
+        
+
+        
+        
+
+    const cardArr = arr.map(appt => <ApptCard key={appt.id} appt={appt}/>)
 
     return (
         <div>
-            { cardArr }
+            <h3>Appointments</h3>
+            {owner || doctor ? cardArr: "No appointments"}
         </div>
     )
 }

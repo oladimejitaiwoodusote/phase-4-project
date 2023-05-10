@@ -1,9 +1,13 @@
 import React from 'react'
+import ApptContainer from './ApptContainer'
 import PetContainer from './PetContainer'
 
-function Dashboard() {
+function Dashboard({owner}) {
     return (
-        <PetContainer />
+        <div>
+            <ApptContainer owner={owner} />
+            <PetContainer />
+        </div>
     )
 }
 

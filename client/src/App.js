@@ -107,8 +107,8 @@ function App() {
         <Route path ='login' element ={<Login attemptLogin={attemptLoginOwner} currentOwner={currentOwner} logout={ownerLogout}/>}/>
         <Route path ='signup' element ={<Signup attemptSignup={attemptSignup}/>}/>
         <Route path ='doclogin' element ={<DocLogin attemptLogin={attemptLoginDoctor} currentDoctor={currentDoctor} logout={doctorLogout}/>}/>
-        <Route path ='dashboard' element ={<Dashboard/>}/>
-        <Route path ='desk' element ={<Desk/>}/>
+        <Route path ='dashboard' element ={<Dashboard owner={currentOwner}/>}/>
+        <Route path ='desk' element ={<Desk doctor={currentDoctor}/>}/>
       </Routes>    
     </>
   );
