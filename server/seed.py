@@ -13,8 +13,8 @@ def create_owners():
         o = Owner(
             email = fake.email(),
             name=fake.name(),
-            username = fake.name(),
-            password = fake.name()
+            username = fake.user_name(),
+            password = fake.password()
         )
         owners.append(o)
     
@@ -27,8 +27,8 @@ def create_doctors():
         d = Doctor(
             name = fake.name(),
             hospital = rc(hospitals),
-            username = fake.name(),
-            password = fake.name(),
+            username = fake.user_name(),
+            password = fake.password(),
             description = fake.sentence(),
             experience = rc(range(2,20))
         )    
@@ -46,7 +46,6 @@ def create_pets(owners, doctors):
     }
     for _ in range(20):
         pet_type = rc(types),
-        print(pet_type)
         p = Pet(
             name = fake.name(),
             pet_type = pet_type[0],

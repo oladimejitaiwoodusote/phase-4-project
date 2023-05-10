@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 
-function Login() {
+function Login({attemptLogin}) {
 
     // #region controlled form
     const [formData, setData] = useState(
         {
-            user: "",
-            pass: ""
+            username: "",
+            password: ""
         }
     )
 
@@ -20,17 +20,18 @@ function Login() {
     function submitHandler(e) {
         // AUTH here
         e.preventDefault()
+        attemptLogin(formData)
         setData({
-            user: "",
-            pass: ""
+            username: "",
+            password: ""
         })
     }
 
     return (
         <form onSubmit={submitHandler}>
             <span>Login</span>
-            <input onChange={changeHandler} name='user' placeholder='Username' value={formData.user}></input>
-            <input onChange={changeHandler} name='pass' placeholder='Password' type='password' value={formData.pass}></input>
+            <input onChange={changeHandler} name='username' placeholder='Username' value={formData.username}></input>
+            <input onChange={changeHandler} name='password' placeholder='Password' type='password' value={formData.password}></input>
             <input onChange={changeHandler} type='submit'></input>
         </form>
     )
