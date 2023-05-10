@@ -15,10 +15,6 @@ function Welcome() {
     
     }
     
-
-
-
-
     return (
         <div>
             <div id ='client-div' onClick={handleClient}>

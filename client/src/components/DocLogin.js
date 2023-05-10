@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 
-function DocLogin() {
+function DocLogin({attemptLogin, currentDoctor, logout}) {
 
     // #region controlled form
     const [formData, setData] = useState(
         {
-            email: "",
-            pass: ""
+            password: "",
+            username: "",
+            email: ""
         }
     )
 
@@ -20,20 +21,22 @@ function DocLogin() {
     function submitHandler(e) {
         // AUTH here
         e.preventDefault()
+        attemptLogin(formData)
         setData({
-            email: "",
-            pass: ""
+            password: "",
+            username: "",
+            email: ""
         })
     }
-
     // add 2FA for this login via email
 
     return (
         <form onSubmit={submitHandler}>
             <span>DocLogin</span>
-            <input onChange={changeHandler} name='email' type='email' placeholder='E-Mail' value={formData.email}></input>
-            <input onChange={changeHandler} name='pass' type='password' placeholder='Password' value={formData.pass}></input>
+            <input onChange={changeHandler} name='username'  placeholder='username' value={formData.username}></input>
+            <input onChange={changeHandler} name='password' type='password' placeholder='Password' value={formData.password}></input>
             <input type='submit'></input>
+            {currentDoctor? <button onClick={logout}>Logout</button>: null}
         </form>
     )
 }
