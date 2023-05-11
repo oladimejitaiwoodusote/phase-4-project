@@ -11,6 +11,7 @@ function App() {
 
   const [currentOwner, setCurrentOwner] = useState(null)
   const [currentDoctor, setCurrentDoctor] = useState(null)
+  const navigate = useNavigate()
  
   useEffect(()=>{
     fetch('/check_session')
@@ -28,6 +29,7 @@ function App() {
       }
     })
   },[])
+  
 
 
   function attemptLoginOwner(ownerData){
@@ -42,7 +44,8 @@ function App() {
     .then(response => {
       if (response.ok){
         response.json()
-        .then( data => setCurrentOwner(data))
+        .then( data =>  setCurrentOwner(data))
+        .then(() => navigate("/dashboard"))
       }
       else {
         response.json()
@@ -63,7 +66,8 @@ function App() {
     .then(response => {
       if (response.ok) {
         response.json()
-        .then(data => setCurrentDoctor(data))
+        .then(data =>setCurrentDoctor(data))
+        .then(()=> navigate('/desk'))
       }
       else {
         response.json()

@@ -85,7 +85,7 @@ def doctor_logout():
 def home():
     return ''
 
-@app.get('/doctors/<int:id>')
+@app.get('/doctor-appointments/<int:id>')
 def get_doctor_appts(id):
     try:
         doctor = Doctor.query.get(id)
@@ -100,6 +100,23 @@ def get_owner_pets(id):
         return [p.to_dict() for p in owner.pets]
     except:
         return {"error": "Owner not found"}, 404
+
+@app.get('/owner-appointments/<int:id>')
+def get_owner_appointments(id):
+    try:
+        owner = Owner.query.get(id)
+        return [a.to_dict() for a in owner.appointments]
+    except:
+        return {"error": "Doctor not found"}, 404
+
+@app.get('/appointment-pet/<int:id>')
+def get_pet(id):
+    appointment = Appointment.query.get(id)
+    pet = appointment.pet
+
+    return pet.to_dict()
+
+
 
 
 if __name__ == '__main__':

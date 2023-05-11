@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 
 function Login({attemptLogin, currentOwner, logout}) {
@@ -11,6 +11,13 @@ function Login({attemptLogin, currentOwner, logout}) {
             password: ""
         }
     )
+
+    useEffect(()=> {
+        if(currentOwner){
+            navigate('/dashboard')
+    }
+},[currentOwner])
+
 
     function changeHandler(e) {
         setData({...formData, [e.target.name]: e.target.value})
@@ -26,7 +33,7 @@ function Login({attemptLogin, currentOwner, logout}) {
             username: "",
             password: ""
         })
-        navigate("/dashboard")
+       
     }
     
     const navigate = useNavigate()
@@ -34,6 +41,11 @@ function Login({attemptLogin, currentOwner, logout}) {
     function clickHandler() {
         navigate("/signup")
     }
+   
+
+   
+        
+    
 
     return (
 
@@ -48,5 +60,6 @@ function Login({attemptLogin, currentOwner, logout}) {
             <button onClick={clickHandler}>Sign Up</button>
         </div>
     )
+    
 }
 export default Login

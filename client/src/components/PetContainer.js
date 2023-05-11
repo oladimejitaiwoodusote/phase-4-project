@@ -2,7 +2,7 @@ import React from 'react'
 import PetCard from './PetCard'
 import { useState, useEffect } from 'react'
 
-function PetContainer() {
+function PetContainer({owner}) {
 
     const [pets, setPets]= useState([])
 

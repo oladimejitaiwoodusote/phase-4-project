@@ -3,12 +3,20 @@ import ApptContainer from './ApptContainer'
 import PetContainer from './PetContainer'
 
 function Dashboard({owner}) {
-    return (
-        <div>
-            <ApptContainer owner={owner} />
-            <PetContainer />
-        </div>
-    )
+    if(owner) {
+        return (
+            <div>
+                <h1>Welcome, {owner.name}</h1>
+                <ApptContainer owner={owner} />
+                <br></br>
+                <PetContainer owner ={owner}/>
+                
+            </div>
+        )
+    }
+    else{
+        return <p>LOADING...</p>
+    }
 }
 
 export default Dashboard
