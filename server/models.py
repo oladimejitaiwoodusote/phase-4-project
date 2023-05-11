@@ -34,8 +34,6 @@ class Owner(db.Model):
     doctors = association_proxy("pets", "doctor")
     #Ask if Owner has one to many with appointments
 
-
-
     def __repr__(self):
         return f'<Owner id={self.id} name={self.name}>'
 
@@ -52,7 +50,9 @@ class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     pet_type = db.Column(db.String)
+    weight = db.Column(db.Integer)
     image = db.Column(db.String)
+    weight = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
@@ -68,7 +68,8 @@ class Pet(db.Model):
             "id": self.id,
             "name": self.name,
             "pet_type": self.pet_type,
-            "image": self.image
+            "image": self.image,
+            "weight": self.weight
         }
 
 class Appointment(db.Model):

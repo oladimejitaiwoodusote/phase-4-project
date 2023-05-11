@@ -31,7 +31,6 @@ function App() {
   },[])
   
 
-
   function attemptLoginOwner(ownerData){
     fetch('/ownerlogin',{
       method: 'POST',
@@ -94,6 +93,7 @@ function App() {
     fetch('/owner_logout',{
       method: 'DELETE'
     })
+    navigate("/")
   }
 
   function doctorLogout(){
@@ -101,9 +101,10 @@ function App() {
     fetch('/doctor_logout',{
       method: 'DELETE'
     })
+    navigate("/")
   }
 
-
+  console.log(currentOwner)
   return (
     <>
       <Routes>
@@ -111,8 +112,8 @@ function App() {
         <Route path ='login' element ={<Login attemptLogin={attemptLoginOwner} currentOwner={currentOwner} logout={ownerLogout}/>}/>
         <Route path ='signup' element ={<Signup attemptSignup={attemptSignup}/>}/>
         <Route path ='doclogin' element ={<DocLogin attemptLogin={attemptLoginDoctor} currentDoctor={currentDoctor} logout={doctorLogout}/>}/>
-        <Route path ='dashboard' element ={<Dashboard owner={currentOwner}/>}/>
-        <Route path ='desk' element ={<Desk doctor={currentDoctor}/>}/>
+        <Route path ='dashboard' element ={<Dashboard owner={currentOwner} logout={ownerLogout}/>}/>
+        <Route path ='desk' element ={<Desk doctor={currentDoctor} logout={doctorLogout}/>}/>
       </Routes>    
     </>
   );

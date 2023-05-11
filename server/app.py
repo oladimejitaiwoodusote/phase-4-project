@@ -93,7 +93,7 @@ def get_doctor_appts(id):
     except:
         return {"error": "Doctor not found"}, 404
 
-@app.get('/owners/<int:id>')
+@app.get('/owner-pets/<int:id>')
 def get_owner_pets(id):
     try:
         owner = Owner.query.get(id)

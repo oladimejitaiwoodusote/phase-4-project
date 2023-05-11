@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import {useNavigate} from "react-router-dom"
 
 function DocLogin({attemptLogin, currentDoctor, logout}) {
 
@@ -30,14 +31,26 @@ function DocLogin({attemptLogin, currentDoctor, logout}) {
     }
     // add 2FA for this login via email
 
+    const navigate = useNavigate()
+    
+    useEffect(()=> {
+        if (currentDoctor){
+            navigate("/desk")
+        }
+    },[currentDoctor])
+
     return (
-        <form onSubmit={submitHandler}>
-            <span>DocLogin</span>
-            <input onChange={changeHandler} name='username'  placeholder='username' value={formData.username}></input>
-            <input onChange={changeHandler} name='password' type='password' placeholder='Password' value={formData.password}></input>
-            <input type='submit'></input>
-            {currentDoctor? <button onClick={logout}>Logout</button>: null}
-        </form>
+        <div className='login-page' id='doctor-login-page'>
+            <div className='form-div'>
+                <h1>DocLogin</h1>
+                <form className='login-form' onSubmit={submitHandler}>
+                    <input className='top-input' onChange={changeHandler} name='username'  placeholder='username' value={formData.username}></input>
+                    <input onChange={changeHandler} name='password' type='password' placeholder='Password' value={formData.password}></input>
+                    <input className='bottom-input' type='submit'></input>
+                    {currentDoctor? <button onClick={logout}>Logout</button>: null}
+                </form>
+            </div>
+        </div>
     )
 }
 
