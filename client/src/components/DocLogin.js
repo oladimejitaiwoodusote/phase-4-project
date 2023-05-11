@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import {useNavigate} from "react-router-dom"
 
 function DocLogin({attemptLogin, currentDoctor, logout}) {
 
@@ -29,6 +30,14 @@ function DocLogin({attemptLogin, currentDoctor, logout}) {
         })
     }
     // add 2FA for this login via email
+
+    const navigate = useNavigate()
+    
+    useEffect(()=> {
+        if (currentDoctor){
+            navigate("/desk")
+        }
+    },[currentDoctor])
 
     return (
         <form onSubmit={submitHandler}>

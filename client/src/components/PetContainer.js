@@ -7,15 +7,20 @@ function PetContainer({ owner }) {
     const [pets, setPets]= useState([])
 
     useEffect(()=> {
-        fetch(`/owner-pets/5`)
-        .then(response => response.json())
-        .then(data=> setPets(data))
-    }, [])
+        if (owner){
+            fetch(`/owner-pets/${owner.id}`)
+            .then(response => response.json())
+            .then(data=> setPets(data))
+        }
+    }, [owner])
 
     const clientPets = pets.map(pet=> <PetCard key={pet.id} pet={pet}/>)
 
+    console.log(owner)
+
     return (
         <div> 
+            <h1>Pets</h1>
             { clientPets }
         </div>
     )
