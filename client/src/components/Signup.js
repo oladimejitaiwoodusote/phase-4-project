@@ -71,19 +71,22 @@ function Signup({attemptSignup}) {
     // add password validations (must contain letter number special character, must match confirm)
 
     return (
-
-        <div>
-            <form onSubmit={submitHandler}>
-                <span>Signup</span>
-                <input onChange={changeHandler} placeholder='E-Mail' type='email' name='email' value={formData.email}></input>
-                <input onChange={changeHandler} placeholder='Name' name='name' value={formData.name}></input>
-                <input onChange={changeHandler} placeholder='Username' name='username' value={formData.username}></input>
-                <input onChange={changeHandler} onKeyUp={checkMatch} placeholder='Password' type='password' name='password' value={formData.password}></input>
-                <input onChange={confirmHandler} onKeyUp={checkMatch} placeholder='Confirm Password' type='password' value={confirm}></input>
-                <span>{ valid ? "✔️" : "❌" }</span>
-                <input type='submit'></input>
-            </form>
-            <button onClick={clickHandler}>Log In</button>
+        <div className='login-page' id="owner-login-page">
+            <div className='form-div'>
+                <h1>Signup</h1>
+                <form className='login-form' onSubmit={submitHandler}>
+                    <input className='top-input' onChange={changeHandler} placeholder='E-Mail' type='email' name='email' value={formData.email}></input>
+                    <input onChange={changeHandler} placeholder='Name' name='name' value={formData.name}></input>
+                    <input onChange={changeHandler} placeholder='Username' name='username' value={formData.username}></input>
+                    <input onChange={changeHandler} onKeyUp={checkMatch} placeholder='Password' type='password' name='password' value={formData.password}></input>
+                    <input onChange={confirmHandler} onKeyUp={checkMatch} placeholder='Confirm Password' type='password' value={confirm}></input>
+                    {/* <span>{ valid ? "✔️" : "❌" }</span> */}
+                    <input className='bottom-input' type='submit'></input>
+                </form>
+                <br></br>
+                <span>Have an account?</span>
+                <button onClick={clickHandler}>Log In</button>
+            </div>
         </div>
     )
 }
