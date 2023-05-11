@@ -12,6 +12,13 @@ function Login({attemptLogin, currentOwner, logout}) {
         }
     )
 
+    useEffect(()=> {
+        if(currentOwner){
+            navigate('/dashboard')
+    }
+},[currentOwner])
+
+
     function changeHandler(e) {
         setData({...formData, [e.target.name]: e.target.value})
     }
@@ -34,6 +41,11 @@ function Login({attemptLogin, currentOwner, logout}) {
     function clickHandler() {
         navigate("/signup")
     }
+   
+
+   
+        
+    
 
     useEffect(()=>{
         if (currentOwner){
@@ -57,5 +69,6 @@ function Login({attemptLogin, currentOwner, logout}) {
             </div>
         </div>
     )
+    
 }
 export default Login

@@ -29,6 +29,7 @@ function App() {
       }
     })
   },[])
+  
 
   function attemptLoginOwner(ownerData){
     fetch('/ownerlogin',{
@@ -42,8 +43,8 @@ function App() {
     .then(response => {
       if (response.ok){
         response.json()
-        .then( data => setCurrentOwner(data))
-        navigate("/dashboard")
+        .then( data =>  setCurrentOwner(data))
+        .then(() => navigate("/dashboard"))
       }
       else {
         response.json()
@@ -64,8 +65,8 @@ function App() {
     .then(response => {
       if (response.ok) {
         response.json()
-        .then(data => setCurrentDoctor(data))
-        navigate("/desk")
+        .then(data =>setCurrentDoctor(data))
+        .then(()=> navigate('/desk'))
       }
       else {
         response.json()
