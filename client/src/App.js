@@ -99,6 +99,8 @@ function App() {
     })
   }
 
+  console.log(currentOwner)
+
 
   return (
     <>

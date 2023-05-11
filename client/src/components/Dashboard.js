@@ -6,7 +6,7 @@ function Dashboard({owner}) {
     return (
         <div>
             <ApptContainer owner={owner} />
-            <PetContainer />
+            <PetContainer owner={owner}/>
         </div>
     )
 }
