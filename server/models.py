@@ -52,6 +52,7 @@ class Pet(db.Model):
     pet_type = db.Column(db.String)
     weight = db.Column(db.Integer)
     image = db.Column(db.String)
+    weight = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
@@ -66,7 +67,9 @@ class Pet(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "pet_type": self.pet_type
+            "pet_type": self.pet_type,
+            "image": self.image,
+            "weight": self.weight
         }
 
 class Appointment(db.Model):

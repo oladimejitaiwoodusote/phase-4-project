@@ -1,9 +1,12 @@
 import React from 'react'
 import ApptContainer from './ApptContainer'
 
-function Desk({doctor}) {
+function Desk({doctor, logout}) {
     return (
-        <ApptContainer doctor={doctor}/>
+        <>
+            <button onClick={logout}>Logout</button>
+            <ApptContainer doctor={doctor}/>
+        </>
     )
 }
 

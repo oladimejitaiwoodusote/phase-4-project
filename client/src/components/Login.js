@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 
@@ -26,7 +26,7 @@ function Login({attemptLogin, currentOwner, logout}) {
             username: "",
             password: ""
         })
-        navigate("/dashboard")
+        //navigate("/dashboard")
     }
     
     const navigate = useNavigate()
@@ -35,8 +35,13 @@ function Login({attemptLogin, currentOwner, logout}) {
         navigate("/signup")
     }
 
-    return (
+    useEffect(()=>{
+        if (currentOwner){
+            navigate("/dashboard")
+        }
+    },[currentOwner])
 
+    return (
         <div className='login-page' id='owner-login-page'>
             <div className='form-div'>
                 <h1>Login</h1>
