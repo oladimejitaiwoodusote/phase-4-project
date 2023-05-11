@@ -37,15 +37,19 @@ function Login({attemptLogin, currentOwner, logout}) {
 
     return (
 
-        <div>
-            <form onSubmit={submitHandler}>
-                <span>Login</span>
-                <input onChange={changeHandler} name='username' placeholder='Username' value={formData.username}></input>
-                <input onChange={changeHandler} name='password' placeholder='Password' type='password' value={formData.password}></input>
-                <input onChange={changeHandler} type='submit'></input>
-                {currentOwner? <button onClick={logout}>Logout</button>: null}
-            </form>
-            <button onClick={clickHandler}>Sign Up</button>
+        <div className='login-page' id='owner-login-page'>
+            <div className='form-div'>
+                <h1>Login</h1>
+                <form className='login-form' onSubmit={submitHandler}>
+                    <input className='top-input' onChange={changeHandler} name='username' placeholder='Username' value={formData.username}></input>
+                    <input onChange={changeHandler} name='password' placeholder='Password' type='password' value={formData.password}></input>
+                    <input className='bottom-input' onChange={changeHandler} type='submit'></input>
+                    {currentOwner? <button onClick={logout}>Logout</button>: null}
+                </form>
+                <br></br>
+                <span>New User?</span>
+                <button onClick={clickHandler}>Sign Up</button>
+            </div>
         </div>
     )
 }
