@@ -52,6 +52,7 @@ def create_pets(owners, doctors):
         p = Pet(
             name = fake.name(),
             pet_type = pet_type[0],
+            weight = rc(range(50,200)),
             image = images[pet_type[0]],
             owner_id = rc([owner.id for owner in owners]),
             doctor_id = rc([doctor.id for doctor in doctors])
