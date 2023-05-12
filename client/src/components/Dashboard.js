@@ -12,9 +12,9 @@ function Dashboard({owner, logout}) {
     // }
     if(owner) {
     return (
-        <div>
+        <div id='dash-div'>
             <h3>Welcome, {owner.name}</h3>
-            <button onClick={logout}>Logout</button>
+            <button className='logout' onClick={logout}>Logout</button>
             <ApptContainer owner={owner} />
             <PetContainer owner={owner}/>
         </div>

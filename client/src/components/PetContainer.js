@@ -20,10 +20,12 @@ function PetContainer({ owner }) {
 
 
     return (
-        <div> 
+        <>
             <h1>Pets</h1>
-            { clientPets }
-        </div>
+            <div id="pet-cont"> 
+                { clientPets }
+            </div>
+        </>
     )
 }
 

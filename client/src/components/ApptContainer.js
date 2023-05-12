@@ -37,9 +37,9 @@ function ApptContainer({owner, doctor, pet_appointment, setPetAppointment, setAp
     const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} doctor={doctor} appt={appt} setAppointment={setAppointment}/>)
 
     return (
-        <div>
+        <div id="appt-cont">
             <h3>Appointments</h3>
-            {cardArr.length ? <ol> {cardArr} </ol>: "No appointments"}
+            {cardArr.length ? <ul> {cardArr} </ul>: "No appointments"}
         
 
         </div>

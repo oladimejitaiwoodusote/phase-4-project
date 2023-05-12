@@ -45,10 +45,10 @@ function PetCard({ pet, updatePet, setnewPet, newpet }) {
     }
 
     return (
-        <div >
+        <div className="pet-card" onClick={clickHandler}>
             <button onClick = {handlePetForm}>Edit Pet</button>
             <h3>{pet.name}</h3>
-            <img onClick={clickHandler} className = "pet-image" src={pet.image}></img>
+            <img alt='pet' onClick={clickHandler} className = "pet-image" src={pet.image}></img>
             {showImage? <div>
                             <h1>Type: {pet.pet_type}</h1>
                             <h1>Weight: {pet.weight} lbs</h1>

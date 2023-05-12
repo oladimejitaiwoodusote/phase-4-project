@@ -14,12 +14,12 @@ function ApptCard({appt, owner, setPetAppointment, setAppointment, doctor}) {
 
     if(owner) {
         return (
-            <li>{appt.type}</li>
+            <li className='appt-card'>{appt.type}</li>
         )
     }
 
     else if(doctor) {
-        return <li onClick={handleClick}>{appt.type}</li>
+        return <li className='appt-card' onClick={handleClick}>{appt.type}</li>
     }
    
     

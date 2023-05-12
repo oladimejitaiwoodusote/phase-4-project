@@ -37,8 +37,9 @@ button {
   justify-content: center;
 
   /* border: solid 1px red; */
-  background-color: aquamarine;
+  background-color: aliceblue;
   border-radius: 0px 0px 10px 10px;
+  border: inset;
 }
 
 #welcome-div {
@@ -68,7 +69,7 @@ button {
 
 #doctor-clickable {
   opacity: 1.0;
-  background-color: lavender;
+  background-color: rgb(146, 75, 146);
 }
 
 #doctor-clickable:hover {
@@ -95,7 +96,7 @@ button {
 }
 
 #doctor-login-page {
-  background-color: lavender;
+  background-color: rgb(146, 75, 146);
 }
 
 .login-page {
@@ -119,6 +120,7 @@ button {
   background-color: aliceblue;
   border-radius: 20px;
   padding: 35px;
+  border: inset;
 }
 
 .login-form {
@@ -149,4 +151,116 @@ input {
   border-radius: 0px 0px 8px 8px;
 }
 
+/* #endregion */
+
+/* #region homepages */
+.logout {
+  z-index: 1;
+  position: absolute;
+  right: 1vw;
+}
+
+.dash-div {
+  display: flex;
+  justify-content: center;
+}
+
+#appt-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+#dash-div #appt-cont {
+  background-color: lightsalmon;
+  height: 100vh;
+  width: 25vw;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+}
+
+#desk-div #appt-cont {
+  background-color: rgb(146, 75, 146);
+  /* position: fixed; */
+  left: 0%;
+  top: 0%;
+}
+
+#desk-div h1 {
+  z-index: 1;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%);
+  background-color: aliceblue;
+  padding: 12px;
+  margin-top: 0px;
+  border-radius: 0px 0px 10px 10px;
+  border: inset;
+}
+
+#pet-cont {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+
+  height: fit-content;
+  width: 75vw;
+  background-color: aliceblue;
+
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+
+#pet-cont img {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 10px;
+}
+
+#appt-popup img {
+  height: 450px;
+  border-radius: 20px;
+}
+
+#appt-popup {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(146, 75, 146);
+}
+
+.pet-card {
+  display: flex;
+  flex-direction: column-reverse;
+
+  width: fit-content;
+  height: fit-content;
+
+  background-color: lightsalmon;
+  margin: 20px;
+  padding: 24px;
+
+  border-radius: 10px;
+  border: outset;
+}
+
+.pet-card:hover {
+  border: inset;
+}
+
+.appt-card {
+  height: fit-content;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: inset;
+
+  padding: 10px;
+  margin: 8px;
+}
+
+#desk-div .appt-card:hover {
+  border: outset;
+}
 /* #endregion */
