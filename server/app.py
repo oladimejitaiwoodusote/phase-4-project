@@ -105,11 +105,9 @@ def get_owner_pets(id):
 def get_owner_appointments(id):
     try:
         owner = Owner.query.get(id)
-        #return [a.to_dict() for a in owner.appointments]
         return [sub_a.to_dict() for a in owner.appointments for sub_a in a]
-
     except:
-        return {"error": "Owner not found"}, 404
+        return {"error": "owner not found"}, 404
 
 @app.get('/appointment-pet/<int:id>')
 def get_pet(id):
@@ -123,6 +121,16 @@ def delete_appointment(id):
     appointment = Appointment.query.get(id)
     db.session.delete(appointment)
     db.session.commit()
+
+@app.patch('/pets/<int:id>')
+def patch_pet(id):
+    newPet = request.json
+    pet = Pet.query.filter(Pet.id == id).update(newPet)
+    db.session.commit()
+
+    pet = Pet.query.get(id)
+    
+    return pet.to_dict(), 201
 
 
 

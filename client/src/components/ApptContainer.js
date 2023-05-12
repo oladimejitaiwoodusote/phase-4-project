@@ -32,14 +32,9 @@ function ApptContainer({owner, doctor, pet_appointment, setPetAppointment, setAp
             
 
         }
-    },[pet_appointment,])
+    },[owner, doctor, pet_appointment])
         
-
-        
-        
-
     const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} doctor={doctor} appt={appt} setAppointment={setAppointment}/>)
-    console.log(cardArr)
 
     return (
         <div>

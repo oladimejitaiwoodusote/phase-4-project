@@ -58,7 +58,7 @@ def create_pets(owners):
         pets.append(p)
     return pets
 
-def create_appointments(pets, doctors, owners):
+def create_appointments(pets, doctors):
     appointments = []
     types = ["Check Up", "Shot", "Blood Work"]
     

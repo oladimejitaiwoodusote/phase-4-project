@@ -67,7 +67,8 @@ class Pet(db.Model):
             "name": self.name,
             "pet_type": self.pet_type,
             "image": self.image,
-            "weight": self.weight
+            "weight": self.weight,
+            "appointments": [appointment.to_dict() for appointment in self.appointments]
         }
 
 class Appointment(db.Model):
@@ -87,7 +88,8 @@ class Appointment(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "type": self.type
+            "type": self.type,
+            "doctor": self.doctor.name
         }
     
 class Doctor(db.Model):
