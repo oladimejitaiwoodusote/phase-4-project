@@ -43,9 +43,9 @@ function ApptContainer({owner, doctor, pet_appointment, setPetAppointment}) {
     console.log(cardArr)
 
     return (
-        <div>
+        <div id="appt-cont">
             <h3>Appointments</h3>
-            {cardArr.length ? <ol> {cardArr} </ol>: "No appointments"}
+            {cardArr.length ? <ul> {cardArr} </ul>: "No appointments"}
         
 
         </div>

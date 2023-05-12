@@ -12,8 +12,8 @@ function Dashboard({owner, logout}) {
     // }
     
     return (
-        <div>
-            <button onClick={logout}>Logout</button>
+        <div id='dash-div'>
+            <button className='logout' onClick={logout}>Logout</button>
             <ApptContainer owner={owner} />
             <PetContainer owner={owner}/>
         </div>

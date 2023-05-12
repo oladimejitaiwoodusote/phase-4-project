@@ -7,12 +7,12 @@ function Desk({doctor,logout}) {
     if(doctor){
     return (
         <>
-            <button onClick={logout}>Logout</button>
-            <div>
-        <h1>Welcome Dr, {doctor.name}</h1>
-        {pet_appointment ? <DisplayPet pet_appointment={pet_appointment} setPetAppointment={setPetAppointment}/>:
-        <ApptContainer doctor={doctor} pet_appointment={pet_appointment} setPetAppointment={setPetAppointment}/>}
-        </div>
+            <button className='logout' onClick={logout}>Logout</button>
+            <div id="desk-div">
+                <h1>Welcome Dr, {doctor.name}</h1>
+                {pet_appointment ? <DisplayPet pet_appointment={pet_appointment} setPetAppointment={setPetAppointment}/>:
+                <ApptContainer doctor={doctor} pet_appointment={pet_appointment} setPetAppointment={setPetAppointment}/>}
+            </div>
         </>
     )
     }
