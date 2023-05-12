@@ -116,6 +116,12 @@ def get_pet(id):
 
     return pet.to_dict()
 
+@app.delete('/appointment-delete/<int:id>')
+def delete_appointment(id):
+    appointment = Appointment.query.get(id)
+    db.session.delete(appointment)
+    db.session.commit()
+
 @app.patch('/pets/<int:id>')
 def patch_pet(id):
     newPet = request.json

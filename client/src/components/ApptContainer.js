@@ -2,7 +2,7 @@ import React from 'react'
 import ApptCard from './ApptCard'
 import { useEffect, useState } from 'react'
 
-function ApptContainer({owner, doctor, pet_appointment, setPetAppointment}) {
+function ApptContainer({owner, doctor, pet_appointment, setPetAppointment, setAppointment}) {
 
     const [arr, setArr] = useState([])
     
@@ -32,9 +32,9 @@ function ApptContainer({owner, doctor, pet_appointment, setPetAppointment}) {
             
 
         }
-    },[owner, doctor])
+    },[owner, doctor, pet_appointment])
         
-    const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} doctor={doctor} appt={appt}/>)
+    const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} doctor={doctor} appt={appt} setAppointment={setAppointment}/>)
 
     return (
         <div>
