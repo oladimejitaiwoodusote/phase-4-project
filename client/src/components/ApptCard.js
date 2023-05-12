@@ -1,12 +1,15 @@
 import React from 'react'
 
-function ApptCard({appt, owner, setDiv, showDiv, setPetAppointment, doctor}) {
+function ApptCard({appt, owner, setPetAppointment, setAppointment, doctor}) {
 
     function handleClick() {
         fetch(`appointment-pet/${appt.id}`)
         .then(response=> response.json())
-        .then(data=>setPetAppointment(data))
-        setDiv(!showDiv)
+        .then(data=> {
+            setPetAppointment(data)
+            setAppointment(appt)
+        })
+       
     }
 
     if(owner) {
