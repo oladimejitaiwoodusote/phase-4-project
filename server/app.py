@@ -5,6 +5,8 @@ from flask_bcrypt import Bcrypt
 
 from models import db, Owner, Pet, Doctor, Appointment
 
+import ipdb
+
 app = Flask(__name__)
 app.secret_key = b'Kj5X:IK~KTG0+$J(b.e3S5%=97xj9S'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -105,9 +107,9 @@ def get_owner_pets(id):
 def get_owner_appointments(id):
     try:
         owner = Owner.query.get(id)
-        return [a.to_dict() for a in owner.appointments]
+        return [sub_a.to_dict() for a in owner.appointments for sub_a in a]
     except:
-        return {"error": "Doctor not found"}, 404
+        return {"error": "owner not found"}, 404
 
 @app.get('/appointment-pet/<int:id>')
 def get_pet(id):
@@ -115,6 +117,16 @@ def get_pet(id):
     pet = appointment.pet
 
     return pet.to_dict()
+
+@app.patch('/pets/<int:id>')
+def patch_pet(id):
+    newPet = request.json
+    pet = Pet.query.filter(Pet.id == id).update(newPet)
+    db.session.commit()
+
+    pet = Pet.query.get(id)
+    
+    return pet.to_dict(), 201
 
 
 
