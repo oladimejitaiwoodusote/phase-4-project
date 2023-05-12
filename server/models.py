@@ -30,8 +30,7 @@ class Owner(db.Model):
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
     pets = db.relationship("Pet", backref="owner")
-    appointments = db.relationship("Appointment", backref="owner")
-    doctors = association_proxy("pets", "doctor")
+    appointments = association_proxy("pets", "appointments")
     #Ask if Owner has one to many with appointments
 
     def __repr__(self):
@@ -57,7 +56,6 @@ class Pet(db.Model):
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
     owner_id = db.Column(db.Integer, db.ForeignKey("owners.id"))
-    doctor_id = db.Column(db.Integer, db.ForeignKey("doctors.id"))
     appointments = db.relationship("Appointment", backref = "pet")
 
     def __repr__(self):
@@ -82,7 +80,6 @@ class Appointment(db.Model):
 
     pet_id = db.Column(db.Integer, db.ForeignKey("pets.id"))
     doctor_id = db.Column(db.Integer, db.ForeignKey("doctors.id"))
-    owner_id = db.Column(db.Integer, db.ForeignKey("owners.id"))
 
     def __repr__(self):
         return f'<Appointment id={self.id} type={self.type}>'
@@ -107,9 +104,7 @@ class Doctor(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), onupdate=db.func.now())
 
-    pets = db.relationship("Pet", backref="doctor")
     appointments = db.relationship("Appointment", backref="doctor")
-    owners = association_proxy("pets", "owner")
 
     #Should doctor also have a many to many with pets?
 
