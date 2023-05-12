@@ -5,8 +5,6 @@ from flask_bcrypt import Bcrypt
 
 from models import db, Owner, Pet, Doctor, Appointment
 
-import ipdb
-
 app = Flask(__name__)
 app.secret_key = b'Kj5X:IK~KTG0+$J(b.e3S5%=97xj9S'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
