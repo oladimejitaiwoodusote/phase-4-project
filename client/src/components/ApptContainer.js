@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 function ApptContainer({owner, doctor, pet_appointment, setPetAppointment}) {
 
     const [arr, setArr] = useState([])
-    const [showDiv, setDiv] = useState(false)
     
 
     // pass doctor prop from App > Desk
@@ -33,14 +32,9 @@ function ApptContainer({owner, doctor, pet_appointment, setPetAppointment}) {
             
 
         }
-    },[])
+    },[owner, doctor])
         
-
-        
-        
-
-    const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} setDiv={setDiv} showDiv={showDiv} doctor={doctor} appt={appt}/>)
-    console.log(cardArr)
+    const cardArr = arr.map(appt => <ApptCard key={appt.id} owner={owner} setPetAppointment={setPetAppointment} doctor={doctor} appt={appt}/>)
 
     return (
         <div>

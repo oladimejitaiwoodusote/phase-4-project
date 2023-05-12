@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8d6996f14489
+Revision ID: cdcff68c85df
 Revises: 
-Create Date: 2023-05-09 09:30:18.423557
+Create Date: 2023-05-11 17:16:36.680426
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8d6996f14489'
+revision = 'cdcff68c85df'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,6 +32,7 @@ def upgrade():
     )
     op.create_table('owners',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(), nullable=True),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('username', sa.String(), nullable=True),
     sa.Column('password', sa.String(), nullable=True),
@@ -43,6 +44,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('pet_type', sa.String(), nullable=True),
+    sa.Column('weight', sa.Integer(), nullable=True),
+    sa.Column('image', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('owner_id', sa.Integer(), nullable=True),
@@ -52,13 +55,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id', name=op.f('pk_pets'))
     )
     op.create_table('appointments',
-    sa.Column('id', sa.String(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('pet_id', sa.Integer(), nullable=True),
     sa.Column('doctor_id', sa.Integer(), nullable=True),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['doctor_id'], ['doctors.id'], name=op.f('fk_appointments_doctor_id_doctors')),
+    sa.ForeignKeyConstraint(['owner_id'], ['owners.id'], name=op.f('fk_appointments_owner_id_owners')),
     sa.ForeignKeyConstraint(['pet_id'], ['pets.id'], name=op.f('fk_appointments_pet_id_pets')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_appointments'))
     )
