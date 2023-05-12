@@ -30,7 +30,6 @@ function App() {
     })
   },[])
   
-
   function attemptLoginOwner(ownerData){
     fetch('/ownerlogin',{
       method: 'POST',
@@ -104,7 +103,6 @@ function App() {
     navigate("/")
   }
 
-  console.log(currentOwner)
   return (
     <>
       <Routes>

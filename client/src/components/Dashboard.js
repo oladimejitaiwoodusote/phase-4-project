@@ -10,14 +10,20 @@ function Dashboard({owner, logout}) {
     // if (owner === null){
     //     navigate('/')
     // }
-    
+    if(owner) {
     return (
         <div id='dash-div'>
+            <h3>Welcome, {owner.name}</h3>
             <button className='logout' onClick={logout}>Logout</button>
             <ApptContainer owner={owner} />
             <PetContainer owner={owner}/>
         </div>
     )
+    }
+
+    else{
+        return "LOADING..."
+    }
 }
 
 export default Dashboard

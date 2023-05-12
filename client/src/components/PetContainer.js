@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 function PetContainer({ owner }) {
 
     const [pets, setPets]= useState([])
+    const [newpet, setnewPet] = useState(false)
 
     useEffect(()=> {
         if (owner){
@@ -12,11 +13,11 @@ function PetContainer({ owner }) {
             .then(response => response.json())
             .then(data=> setPets(data))
         }
-    }, [owner])
+    }, [owner, newpet])
 
-    const clientPets = pets.map(pet=> <PetCard key={pet.id} pet={pet}/>)
 
-    console.log(owner)
+    const clientPets = pets.map(pet=> <PetCard key={pet.id} newpet={newpet} setnewPet={setnewPet} pet={pet}/>)
+
 
     return (
         <>

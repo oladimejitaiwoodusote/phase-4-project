@@ -16,7 +16,6 @@ def create_owners():
             email = fake.email(),
             name=fake.name(),
             username = fake.user_name(),
-            #password = fake.password()
             password = bcrypt.generate_password_hash("password").decode('utf-8')
         )
         owners.append(o)
@@ -38,7 +37,7 @@ def create_doctors():
         doctors.append(d)
     return doctors
 
-def create_pets(owners, doctors):
+def create_pets(owners):
     pets = []
     types = ["Dog", "Cat", "Hamster", "Parrot"]
     images = {
@@ -54,14 +53,12 @@ def create_pets(owners, doctors):
             pet_type = pet_type[0],
             weight = rc(range(50,200)),
             image = images[pet_type[0]],
-            weight = rc(range(50,200)),
             owner_id = rc([owner.id for owner in owners]),
-            doctor_id = rc([doctor.id for doctor in doctors])
         )
         pets.append(p)
     return pets
 
-def create_appointments(pets, doctors, owners):
+def create_appointments(pets, doctors):
     appointments = []
     types = ["Check Up", "Shot", "Blood Work"]
     
@@ -70,7 +67,6 @@ def create_appointments(pets, doctors, owners):
             type = rc(types),
             pet_id = rc([pet.id for pet in pets]),
             doctor_id = rc([doctor.id for doctor in doctors]),
-            owner_id = rc([owner.id for owner in owners])
         )
         appointments.append(a)
     return appointments
@@ -91,11 +87,11 @@ if __name__ == "__main__":
         db.session.add_all(doctors)
         db.session.commit()
 
-        pets = create_pets(owners, doctors)
+        pets = create_pets(owners)
         db.session.add_all(pets)
         db.session.commit()
 
-        appointments = create_appointments(pets, doctors, owners)
+        appointments = create_appointments(pets, doctors)
         db.session.add_all(appointments)
         db.session.commit()
 
