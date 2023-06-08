@@ -1,4 +1,4 @@
-# phase-4-project (working title)
+# phase-4-project
 
 This website can be used by both pet owners and veterinarians to arrange and manage appointments for pets.  
 Data is stored in SQL relational tables, and the site utilizes relationships between pets, their owners, doctors, and appointments they set.  
