@@ -38,8 +38,3 @@ A fullstack web application for keep track of pet appointments for both pet owne
 - Pet Management: User can edit the details of their existing pets
 <img width="1340" alt="Screen Shot 2024-01-18 at 3 12 51 PM" src="https://github.com/oladimejitaiwoodusote/Capstone-/assets/79773788/ab8e13e9-555e-4b99-8e20-764bc67ac2d6">
 <img width="376" alt="Screen Shot 2024-01-18 at 3 12 59 PM" src="https://github.com/oladimejitaiwoodusote/Capstone-/assets/79773788/83ba09b9-3b02-4d02-9fed-2d3481f26c99">
-
-
-When an owner requests an appointment with a doctor for the first time, they are asked to input information about their pet. After that, the pet's profile will be saved and can be used to quickly book more appointments.  
-
-A doctor may view all their current appointments and mark them as complete at any time.
